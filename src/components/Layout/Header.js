@@ -16,13 +16,13 @@ const Header = () => {
                         <NavDropdown title="Tùy chọn" id="basic-nav-dropdown">
                             {user && (user.role === "ADMIN" || user.role === "NHANVIEN") ? (
                                 <>
-                                    <NavDropdown.Item as={Link} to="/action2">Đơn hàng nhập</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action3">Đơn hàng xuất</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action3">Quản lý kho</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action3">Quản lý sản phẩm</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action3">Đối tác vận chuyển</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action1">Nhà cung cấp</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/action1">Vận chuyển</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/ds-donhangnhap">Đơn hàng nhập</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Đơn hàng xuất</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Quản lý kho</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Quản lý sản phẩm</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Đối tác vận chuyển</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Nhà cung cấp</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="#">Vận chuyển</NavDropdown.Item>
                                 </>
                             ):(
                                 <>
