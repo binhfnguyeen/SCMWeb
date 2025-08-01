@@ -12,6 +12,24 @@ import MyUserReducer from "./reducers/MyUserReducer";
 import DonHangNhap from "./components/DonHangNhap";
 import ChiTietDonHangNhap from "./components/ChiTietDonHangNhap";
 import ThemDonHangNhap from "./components/ThemDonHangNhap";
+import HoaDonNhap from "./components/HoaDonNhap";
+import ChiTietHoaDonNhap from "./components/ChiTietHoaDonNhap";
+import Kho from "./components/Kho";
+import ChiTietKho from "./components/ChiTietKho";
+import VanChuyen from "./components/VanChuyen";
+import ChiTietVanChuyen from "./components/ChiTietVanChuyen";
+import ThemVanChuyen from "./components/ThemVanChuyen";
+import UpdateVanChuyen from "./components/UpdateVanChuyen";
+import NhaCungCap from "./components/NhaCungCap";
+import ChiTietNhaCungCap from "./components/ChiTietNhaCungCap";
+import ThemNhaCungCap from "./components/ThemNhaCungCap";
+import UpdateNhaCungCap from "./components/UpdateNhaCungCap";
+import DanhGia from "./components/DanhGia";
+import ThemDanhGia from "./components/ThemDanhGia";
+import DoiTacVanChuyen from "./components/DoiTacVanChuyen";
+import ChiTietDoiTacVanChuyen from "./components/ChiTietDoiTacVanChuyen";
+import ThemDoiTacVanChuyen from "./components/ThemDoiTacVanChuyen";
+import UpdateDoiTacVanChuyen from "./components/UpdateDoiTacVanChuyen";
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   return (
@@ -27,6 +45,24 @@ const App = () => {
             <Route path="/ds-donhangnhap" element={<DonHangNhap />}/>
             <Route path="/ds-donhangnhap/:id" element={<ChiTietDonHangNhap />}/>
             <Route path="/ds-donhangnhap/them-donhang" element={<ThemDonHangNhap />}/>
+            <Route path="/ds-hoadonnhap" element={<HoaDonNhap />} />
+            <Route path="/ds-hoadonnhap/:id" element={<ChiTietHoaDonNhap />} />
+            <Route path="/ds-kho" element={<Kho />} />
+            <Route path="/ds-kho/:id" element={<ChiTietKho />} />
+            <Route path="/ds-vanchuyen" element={<VanChuyen />} />
+            <Route path="/ds-vanchuyen/:id" element={<ChiTietVanChuyen />} />
+            <Route path="/ds-vanchuyen/them-vanchuyen" element={<ThemVanChuyen />} />
+            <Route path="/ds-vanchuyen/:id/chinhsua-vanchuyen" element={<UpdateVanChuyen />} />
+            <Route path="/ds-nhacungcap" element={<NhaCungCap />}/>
+            <Route path="/ds-nhacungcap/:id" element={<ChiTietNhaCungCap />} />
+            <Route path="/ds-nhacungcap/them-nhacungcap" element={<ThemNhaCungCap />} />
+            <Route path="/ds-nhacungcap/:id/chinhsua-nhacungcap" element={<UpdateNhaCungCap/>} />
+            <Route path="/ds-nhacungcap/:id/ds-danhgia" element={<DanhGia />}/>
+            <Route path="/ds-nhacungcap/:id/them-danhgia" element={<ThemDanhGia />}/>
+            <Route path="/ds-doitacvanchuyen" element={<DoiTacVanChuyen />} />
+            <Route path="/ds-doitacvanchuyen/:id" element={<ChiTietDoiTacVanChuyen/>}/>
+            <Route path="/ds-doitacvanchuyen/them-doitacvanchuyen" element={<ThemDoiTacVanChuyen/>}/>
+            <Route path="/ds-doitacvanchuyen/:id/chinhsua-doitacvanchuyen" element={<UpdateDoiTacVanChuyen/>}/>
           </Routes>
         </Container>
 

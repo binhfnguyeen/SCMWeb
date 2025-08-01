@@ -11,6 +11,7 @@ const DonHangNhap = () => {
     const [loading, setLoading] = useState(false);
     const [q, setQ] = useState();
     const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
 
     const loadDsDonHangNhap = async () => {
         let url = `${endpoints['Ds-donhangnhap']}?page=${page}`;
@@ -23,9 +24,10 @@ const DonHangNhap = () => {
             setLoading(true);
             let res = await authApis().get(url);
 
-            if (res.data.length == 0 && page > 1) {
-                setPage(0);
+            if (res.data.length === 0) {
+                setHasMore(false);
             } else {
+                setHasMore(true);
                 if (page <= 1) {
                     setDonHangNhap(res.data);
                 } else {
@@ -42,7 +44,7 @@ const DonHangNhap = () => {
     useEffect(() => {
         setLoading(true);
         let timer = setTimeout(() => {
-            if (page > 0)
+            if (page > 0 && hasMore)
                 loadDsDonHangNhap();
         }, 500);
 
@@ -62,6 +64,9 @@ const DonHangNhap = () => {
             <h2 className="text-center text-success mb-4">Danh sách Đơn hàng nhập</h2>
             <Nav className="ms-auto align-items-center gap-2 mb-2">
                 <Link to="/ds-donhangnhap/them-donhang" className="btn btn-outline-primary btn-sm">Thêm đơn hàng nhập</Link>
+            </Nav>
+            <Nav className="ms-auto align-items-center gap-2 mb-2">
+                <Link to="/ds-hoadonnhap" className="btn btn-outline-primary btn-sm">Danh sách hóa đơn nhập</Link>
             </Nav>
             <Form>
                 <Form.Group className="mb-3 mt-2">
@@ -115,7 +120,7 @@ const DonHangNhap = () => {
 
             {loading && <MySpinner />}
 
-            {page > 0 && <div className="mt-2 mb-2 text-center">
+            {page > 0 && hasMore && <div className="mt-2 mb-2 text-center">
                 <Button variant="primary" onClick={loadMore}>Xem thêm...</Button>
             </div>}
         </Container>
