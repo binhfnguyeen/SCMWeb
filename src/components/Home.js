@@ -4,6 +4,7 @@ import { Alert, Button, Card, Col, Form, Row, Spinner } from "react-bootstrap";
 import Apis, { endpoints } from "../configs/Apis";
 import { useSearchParams } from "react-router-dom";
 import cookie from 'react-cookies'
+import MySpinner from "./Layout/MySpinner";
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
         let url = `${endpoints['sanpham']}?page=${page}`;
 
         if (q)
-            url  = `${url}&kw=${q}`;
+            url  = `${url}&ten=${q}`;
 
         let cateId = params.get("cateId");
         if (cateId)
@@ -64,6 +65,27 @@ const Home = () => {
         setPage(page + 1);
     }
 
+    const order=(sanpham)=>{
+        let carts=cookie.load('carts') || null;
+        if(carts===null){
+            carts={};
+        }
+        
+        if(sanpham.id in carts){
+            carts[sanpham.id]["quantity"]++;
+        }else{
+            carts[sanpham.id]={
+                "id":sanpham.id,
+                "ten":sanpham.ten,
+                "quantity":1
+            }
+        }
+
+        cookie.save("carts", carts);
+        console.info(carts)
+    
+    }
+
     
 
     return (
@@ -77,20 +99,21 @@ const Home = () => {
             {(!sanpham || sanpham.length === 0) && <Alert variant="info" className="mt-2">Không có sản phẩm nào!</Alert>}
 
             <Row>
-                {sanpham.map(s => <Col key={s.id} md={3} xs={6} className="p-1">
+                {sanpham.map(s => <Col key={s.idSpNcc} md={3} xs={6} className="p-1">
                     <Card>
                         <Card.Img variant="top" src={s.hinh} />
                         <Card.Body>
-                            <Card.Title>{s.ten}</Card.Title>
-                            {/* <Card.Text>{p.price} VNĐ</Card.Text> */}
+                            <Card.Title>{s.tenSanPham}</Card.Title>
+                            <Card.Text>{s.gia} VNĐ</Card.Text>
+                            <Card.Text>{s.tenNhaCungCap}</Card.Text>
                             <Button variant="primary me-1">Xem chi tiết</Button>
-                            {/* <Button variant="danger" onClick={() => order(p)}>Đặt hàng</Button> */}
+                            <Button variant="danger" onClick={() => order(s)}>Đặt hàng</Button>
                         </Card.Body>
                     </Card>
                 </Col>)}
             </Row>
 
-            {/* {loading && <MySpinner />} */}
+            {loading && <MySpinner />}
 
             {page > 0 && <div className="mt-2 mb-2 text-center">
                 <Button variant="primary" onClick={loadMore}>Xem thêm...</Button>
@@ -98,5 +121,4 @@ const Home = () => {
         </>
     );
 }
-
 export default Home;

@@ -7,7 +7,15 @@ export const endpoints = {
     'register': '/users',
     'login': '/login',
     'profile': '/secure/profile',
-    'sanpham':'/ds-sanpham'
+    'sanpham':'/ds-sanpham',
+    'Ds-donhangnhap': '/secure/ds-donhangnhap',
+    'Chitiet-donhangnhap': (idDonHang)=>`/secure/ds-donhangnhap/${idDonHang}`,
+    'Ds-kho': '/ds-kho',
+    'Ds-vanchuyen': '/ds-vanchuyen',
+    'Ds-nhacungcap': '/ds-nhacungcap',
+    'Sanpham-Nhacungcap': (nccId)=>`/nhacungcap/${nccId}/sanpham`,
+    'Them-donhangnhap': '/secure/donhangnhap',
+    'Xuat-hoadonnhap': (dhID)=>`/secure/donhangnhap/${dhID}/xuat-hoadon`
 }
 
 export const authApis = () => axios.create({

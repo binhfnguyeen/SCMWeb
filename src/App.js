@@ -9,6 +9,9 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { useReducer } from "react";
 import MyUserReducer from "./reducers/MyUserReducer";
+import DonHangNhap from "./components/DonHangNhap";
+import ChiTietDonHangNhap from "./components/ChiTietDonHangNhap";
+import ThemDonHangNhap from "./components/ThemDonHangNhap";
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   return (
@@ -21,6 +24,9 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
+            <Route path="/ds-donhangnhap" element={<DonHangNhap />}/>
+            <Route path="/ds-donhangnhap/:id" element={<ChiTietDonHangNhap />}/>
+            <Route path="/ds-donhangnhap/them-donhang" element={<ThemDonHangNhap />}/>
           </Routes>
         </Container>
 
