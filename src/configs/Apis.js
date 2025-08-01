@@ -6,7 +6,8 @@ const BASE_URL = "http://localhost:8080/SupplyChainManagement/api/";
 export const endpoints = {
     'register': '/users',
     'login': '/login',
-    'profile': '/secure/profile'
+    'profile': '/secure/profile',
+    'sanpham':'/ds-sanpham'
 }
 
 export const authApis = () => axios.create({
