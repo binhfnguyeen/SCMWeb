@@ -10,11 +10,27 @@ export const endpoints = {
     'Ds-donhangnhap': '/secure/ds-donhangnhap',
     'Chitiet-donhangnhap': (idDonHang)=>`/secure/ds-donhangnhap/${idDonHang}`,
     'Ds-kho': '/ds-kho',
+    'Them-kho': '/secure/ds-kho',
+    'Chitiet-kho': (idKho)=>`/ds-kho/${idKho}`,
+    'Xoa-kho': (idKho)=>`/secure/ds-kho/${idKho}`,
+    'Kho-chitiet-sanpham': (idKho)=>`/kho/${idKho}/sanpham`,
     'Ds-vanchuyen': '/ds-vanchuyen',
+    'Chitiet-vanchuyen': (vcId) => `/ds-vanchuyen/${vcId}`,
+    'Them-vanchuyen': '/secure/ds-vanchuyen',
+    'Xoa-vanchuyen': (vcId) => `/secure/ds-vanchuyen/${vcId}`,
     'Ds-nhacungcap': '/ds-nhacungcap',
+    'Chitiet-nhacungcap': (nccId) => `/ds-nhacungcap/${nccId}`,
+    'Them-nhacungcap': '/secure/ds-nhacungcap',
+    'Ds-danhgia-nhacungcap': (nccId) => `/secure/nhacungcap/${nccId}/danhgia`,
+    'Them-danhgia-nhacungcap': "/secure/danhgia",
+    'Xoa-nhacungcap': (nccId)=>`/secure/ds-nhacungcap/${nccId}`,
     'Sanpham-Nhacungcap': (nccId)=>`/nhacungcap/${nccId}/sanpham`,
     'Them-donhangnhap': '/secure/donhangnhap',
-    'Xuat-hoadonnhap': (dhID)=>`/secure/donhangnhap/${dhID}/xuat-hoadon`
+    'Xuat-hoadonnhap': (dhID)=>`/secure/donhangnhap/${dhID}/xuat-hoadon`,
+    'Ds-hoadonnhap': '/secure/ds-hoadonnhap',
+    'Chitiet-hoadonnhap': (hdID) => `/secure/ds-hoadonnhap/${hdID}`,
+    'Ds-doitacvanchuyen': '/secure/DoiTacVanChuyen',
+    'Chitiet-doitacvanchuyen': (dtId) => `/DoiTacVanChuyen/${dtId}`
 }
 
 export const authApis = () => axios.create({
