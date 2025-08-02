@@ -5,6 +5,7 @@ import Apis, { endpoints } from "../configs/Apis";
 import { useSearchParams } from "react-router-dom";
 import cookie from 'react-cookies'
 import MySpinner from "./Layout/MySpinner";
+import { MyCartContext } from "../configs/Context";
 
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
     const [q, setQ] = useState();
     const [page, setPage] = useState(1);
     const [params] = useSearchParams();
-    // const [, cartDispatch] = useContext(MyCartContext);
+    const [, cartDispatch] = useContext(MyCartContext);
 
     const loadProducts = async () => {
         let url = `${endpoints['sanpham']}?page=${page}`;
@@ -71,18 +72,24 @@ const Home = () => {
             carts={};
         }
         
-        if(sanpham.id in carts){
-            carts[sanpham.id]["quantity"]++;
+        if(sanpham.idSpNcc in carts){
+            carts[sanpham.idSpNcc]["quantity"]++;
         }else{
-            carts[sanpham.id]={
-                "id":sanpham.id,
-                "ten":sanpham.ten,
+            carts[sanpham.idSpNcc]={
+                "id":sanpham.idSp,
+                "name":sanpham.tenSanPham,
+                "price":sanpham.gia,
+                "idNhaCungCap":sanpham.idNcc,
                 "quantity":1
             }
         }
 
         cookie.save("carts", carts);
-        console.info(carts)
+        console.info(carts);
+
+         cartDispatch({
+            "type": "update"
+        })
     
     }
 

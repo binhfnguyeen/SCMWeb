@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { Badge, Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { MyUserContext } from "../../configs/Context";
+import { MyCartContext, MyUserContext } from "../../configs/Context";
 import { Link } from "react-router-dom";
 
 const Header = () => {
     const [user, dispatch] = useContext(MyUserContext);
+    const [cartCounter, ] = useContext(MyCartContext);
     return (
         <Navbar expand="lg" className="bg-white shadow-sm py-3 px-4">
             <Container>
@@ -31,7 +32,7 @@ const Header = () => {
                             )}
                         </NavDropdown>
 
-                        <Link to="/cart" className="nav-link text-success">Giỏ hàng <Badge bg="danger">0</Badge></Link>
+                        <Link to="/cart" className="nav-link text-success">Giỏ hàng <Badge bg="danger">{cartCounter}</Badge></Link>
                     </Nav>
 
                     <Nav className="ms-auto align-items-center gap-2">

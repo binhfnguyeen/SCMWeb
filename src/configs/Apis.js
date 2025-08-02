@@ -8,8 +8,12 @@ export const endpoints = {
     'login': '/login',
     'profile': '/secure/profile',
     'sanpham':'/ds-sanpham',
+    'order':"/secure/DonHangXuat",
     'Ds-donhangnhap': '/secure/ds-donhangnhap',
+    'Ds-donhangxuat':'/secure/DonHangXuat',
+    'Chitiet-donhangxuat':(idDonHang)=>`/secure/DonHangXuat/${idDonHang}`,
     'Chitiet-donhangnhap': (idDonHang)=>`/secure/ds-donhangnhap/${idDonHang}`,
+    'Sanpham-donhangxuat':(idDonHang)=>`/secure/SpDonHangXuat/${idDonHang}`,
     'Ds-kho': '/ds-kho',
     'Them-kho': '/secure/ds-kho',
     'Chitiet-kho': (idKho)=>`/ds-kho/${idKho}`,
@@ -28,10 +32,13 @@ export const endpoints = {
     'Sanpham-Nhacungcap': (nccId)=>`/nhacungcap/${nccId}/sanpham`,
     'Them-donhangnhap': '/secure/donhangnhap',
     'Xuat-hoadonnhap': (dhID)=>`/secure/donhangnhap/${dhID}/xuat-hoadon`,
+    'Xuat-hoadonxuat': (dhID)=>`/secure/donhangxuat/${dhID}/xuat-hoadon`,
     'Ds-hoadonnhap': '/secure/ds-hoadonnhap',
     'Chitiet-hoadonnhap': (hdID) => `/secure/ds-hoadonnhap/${hdID}`,
     'Ds-doitacvanchuyen': '/secure/DoiTacVanChuyen',
-    'Chitiet-doitacvanchuyen': (dtId) => `/DoiTacVanChuyen/${dtId}`
+    'Chitiet-doitacvanchuyen': (dtId) => `/DoiTacVanChuyen/${dtId}`,
+    'Ds-hoadonxuat':`/secure/ds-hoadonxuat`,
+    'Chitiet-hoadonxuat':(hdID)=>`/secure/ds-hoadonxuat/${hdID}`
 }
 
 export const authApis = () => axios.create({
