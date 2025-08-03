@@ -36,6 +36,9 @@ import Cart from "./components/Cart";
 import MyCartReducer from "./reducers/MyCartReducer";
 import HoaDonXuat from "./components/HoaDonXuat";
 import ChiTietHoaDonXuat from "./components/ChiTietHoaDonXuat";
+import HoTroKhachhang from "./components/HoTroKhachHang";
+import DsChatCSKH from "./components/DsChatCSKH";
+import CSKHChatPage from "./components/CSKHChatPage";
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   let [cartCounter, cartDispatch] = useReducer(MyCartReducer, 0);
@@ -76,6 +79,9 @@ const App = () => {
               <Route path="/ds-hoadonxuat" element={<HoaDonXuat/>}/>
               <Route path="/cart" element={<Cart/>}/>
               <Route path="/ds-hoadonxuat/:id" element={<ChiTietHoaDonXuat/>}/>
+              <Route path="/hotrokhachhang" element={<HoTroKhachhang />} />
+              <Route path="/cskh/danhsach" element={<DsChatCSKH />} />
+              <Route path="/cskh/danhsach/:id" element={<CSKHChatPage />} />
             </Routes>
           </Container>
 

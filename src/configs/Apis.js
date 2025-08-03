@@ -38,7 +38,8 @@ export const endpoints = {
     'Ds-doitacvanchuyen': '/secure/DoiTacVanChuyen',
     'Chitiet-doitacvanchuyen': (dtId) => `/DoiTacVanChuyen/${dtId}`,
     'Ds-hoadonxuat':`/secure/ds-hoadonxuat`,
-    'Chitiet-hoadonxuat':(hdID)=>`/secure/ds-hoadonxuat/${hdID}`
+    'Chitiet-hoadonxuat':(hdID)=>`/secure/ds-hoadonxuat/${hdID}`,
+    'User-cskh': "/users/cskh"
 }
 
 export const authApis = () => axios.create({
