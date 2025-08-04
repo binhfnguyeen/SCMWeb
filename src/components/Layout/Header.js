@@ -20,15 +20,16 @@ const Header = () => {
                                     <NavDropdown.Item as={Link} to="/ds-donhangnhap">Đơn hàng nhập</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-donhangxuat">Đơn hàng xuất</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-kho">Quản lý kho</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="#">Quản lý sản phẩm</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-doitacvanchuyen">Đối tác vận chuyển</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-nhacungcap">Nhà cung cấp</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-vanchuyen">Vận chuyển</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-donhangxuat">Vận chuyển</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/Nhanvien/ds-donhang/vanchuyen">Danh sách đơn hàng vận chuyển</NavDropdown.Item>
+                                    {user.username == "cskh" && <NavDropdown.Item as={Link} to="/cskh/danhsach">Danh sách chăm sóc khách hàng</NavDropdown.Item>}
                                 </>
                             ):(
                                 <>
-                                    <NavDropdown.Item as={Link} to="/action2">Sản phẩm</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/Khachhang/ds-donhang/vanchuyen">Theo dõi đơn hàng</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/hotrokhachhang">Hỗ trợ khách hàng</NavDropdown.Item>
                                 </>
                             )}
                         </NavDropdown>
