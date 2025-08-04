@@ -18,12 +18,13 @@ const Header = () => {
                             {user && (user.role === "ADMIN" || user.role === "NHANVIEN") ? (
                                 <>
                                     <NavDropdown.Item as={Link} to="/ds-donhangnhap">Đơn hàng nhập</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="#">Đơn hàng xuất</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/ds-donhangxuat">Đơn hàng xuất</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-kho">Quản lý kho</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="#">Quản lý sản phẩm</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-doitacvanchuyen">Đối tác vận chuyển</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-nhacungcap">Nhà cung cấp</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-vanchuyen">Vận chuyển</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/ds-donhangxuat">Vận chuyển</NavDropdown.Item>
                                 </>
                             ):(
                                 <>

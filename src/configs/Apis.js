@@ -38,7 +38,12 @@ export const endpoints = {
     'Ds-doitacvanchuyen': '/secure/DoiTacVanChuyen',
     'Chitiet-doitacvanchuyen': (dtId) => `/DoiTacVanChuyen/${dtId}`,
     'Ds-hoadonxuat':`/secure/ds-hoadonxuat`,
-    'Chitiet-hoadonxuat':(hdID)=>`/secure/ds-hoadonxuat/${hdID}`
+    'Chitiet-hoadonxuat':(hdID)=>`/secure/ds-hoadonxuat/${hdID}`,
+    // 'Paypal':(dhID)=>`/paypal/create-payment/${dhID}`,
+    'HoadonPaypal':(dhID)=>`/secure/hoadonxuat/${dhID}`,
+    "Them-sp-ncc":'/secure/nhacungcap/sanpham',
+    'addsanpham':'/secure/ds-sanpham'
+    
 }
 
 export const authApis = () => axios.create({

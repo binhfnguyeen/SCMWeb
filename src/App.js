@@ -36,53 +36,58 @@ import Cart from "./components/Cart";
 import MyCartReducer from "./reducers/MyCartReducer";
 import HoaDonXuat from "./components/HoaDonXuat";
 import ChiTietHoaDonXuat from "./components/ChiTietHoaDonXuat";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import ThemSanPham from "./components/ThemSanPham";
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   let [cartCounter, cartDispatch] = useReducer(MyCartReducer, 0);
   return (
-    <MyUserContext.Provider value={[user, dispatch]}>
-      <MyCartContext.Provider value={[cartCounter, cartDispatch]}>
-        <BrowserRouter>
-          <Header />
+    <PayPalScriptProvider options={{ "client-id": "AVWMIgje4DokV20FBQMA4K4342piZKJXpqCvwhlchvAoP_2Ag7evD1LLOAKcRUtDjNOv16s9nV-osDx8" }}>
+      <MyUserContext.Provider value={[user, dispatch]}>
+        <MyCartContext.Provider value={[cartCounter, cartDispatch]}>
+          <BrowserRouter>
+            <Header />
 
-          <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />}/>
-              <Route path="/register" element={<Register />}/>
-              <Route path="/ds-donhangnhap" element={<DonHangNhap />}/>
-              <Route path="/ds-donhangnhap/:id" element={<ChiTietDonHangNhap />}/>
-              <Route path="/ds-donhangnhap/them-donhang" element={<ThemDonHangNhap />}/>
-              <Route path="/ds-hoadonnhap" element={<HoaDonNhap />} />
-              <Route path="/ds-hoadonnhap/:id" element={<ChiTietHoaDonNhap />} />
-              <Route path="/ds-kho" element={<Kho />} />
-              <Route path="/ds-kho/:id" element={<ChiTietKho />} />
-              <Route path="/ds-vanchuyen" element={<VanChuyen />} />
-              <Route path="/ds-vanchuyen/:id" element={<ChiTietVanChuyen />} />
-              <Route path="/ds-vanchuyen/them-vanchuyen" element={<ThemVanChuyen />} />
-              <Route path="/ds-vanchuyen/:id/chinhsua-vanchuyen" element={<UpdateVanChuyen />} />
-              <Route path="/ds-nhacungcap" element={<NhaCungCap />}/>
-              <Route path="/ds-nhacungcap/:id" element={<ChiTietNhaCungCap />} />
-              <Route path="/ds-nhacungcap/them-nhacungcap" element={<ThemNhaCungCap />} />
-              <Route path="/ds-nhacungcap/:id/chinhsua-nhacungcap" element={<UpdateNhaCungCap/>} />
-              <Route path="/ds-nhacungcap/:id/ds-danhgia" element={<DanhGia />}/>
-              <Route path="/ds-nhacungcap/:id/them-danhgia" element={<ThemDanhGia />}/>
-              <Route path="/ds-doitacvanchuyen" element={<DoiTacVanChuyen />} />
-              <Route path="/ds-doitacvanchuyen/:id" element={<ChiTietDoiTacVanChuyen/>}/>
-              <Route path="/ds-doitacvanchuyen/them-doitacvanchuyen" element={<ThemDoiTacVanChuyen/>}/>
-              <Route path="/ds-doitacvanchuyen/:id/chinhsua-doitacvanchuyen" element={<UpdateDoiTacVanChuyen/>}/>
-              <Route path="/ds-donhangxuat" element={<DonHangXuat/>}/>
-              <Route path="/ds-donhangxuat/:id" element={<ChiTietDonHangXuat/>}/>
-              <Route path="/ds-hoadonxuat" element={<HoaDonXuat/>}/>
-              <Route path="/cart" element={<Cart/>}/>
-              <Route path="/ds-hoadonxuat/:id" element={<ChiTietHoaDonXuat/>}/>
-            </Routes>
-          </Container>
+            <Container>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />}/>
+                <Route path="/register" element={<Register />}/>
+                <Route path="/ds-donhangnhap" element={<DonHangNhap />}/>
+                <Route path="/ds-donhangnhap/:id" element={<ChiTietDonHangNhap />}/>
+                <Route path="/ds-donhangnhap/them-donhang" element={<ThemDonHangNhap />}/>
+                <Route path="/ds-hoadonnhap" element={<HoaDonNhap />} />
+                <Route path="/ds-hoadonnhap/:id" element={<ChiTietHoaDonNhap />} />
+                <Route path="/ds-kho" element={<Kho />} />
+                <Route path="/ds-kho/:id" element={<ChiTietKho />} />
+                <Route path="/ds-vanchuyen" element={<VanChuyen />} />
+                <Route path="/ds-vanchuyen/:id" element={<ChiTietVanChuyen />} />
+                <Route path="/ds-vanchuyen/them-vanchuyen" element={<ThemVanChuyen />} />
+                <Route path="/ds-vanchuyen/:id/chinhsua-vanchuyen" element={<UpdateVanChuyen />} />
+                <Route path="/ds-nhacungcap" element={<NhaCungCap />}/>
+                <Route path="/ds-nhacungcap/:id" element={<ChiTietNhaCungCap />} />
+                <Route path="/ds-nhacungcap/them-nhacungcap" element={<ThemNhaCungCap />} />
+                <Route path="/ds-nhacungcap/:id/chinhsua-nhacungcap" element={<UpdateNhaCungCap/>} />
+                <Route path="/ds-nhacungcap/:id/themsanpham" element={<ThemSanPham/>} />
+                <Route path="/ds-nhacungcap/:id/ds-danhgia" element={<DanhGia />}/>
+                <Route path="/ds-nhacungcap/:id/them-danhgia" element={<ThemDanhGia />}/>
+                <Route path="/ds-doitacvanchuyen" element={<DoiTacVanChuyen />} />
+                <Route path="/ds-doitacvanchuyen/:id" element={<ChiTietDoiTacVanChuyen/>}/>
+                <Route path="/ds-doitacvanchuyen/them-doitacvanchuyen" element={<ThemDoiTacVanChuyen/>}/>
+                <Route path="/ds-doitacvanchuyen/:id/chinhsua-doitacvanchuyen" element={<UpdateDoiTacVanChuyen/>}/>
+                <Route path="/ds-donhangxuat" element={<DonHangXuat/>}/>
+                <Route path="/ds-donhangxuat/:id" element={<ChiTietDonHangXuat/>}/>
+                <Route path="/ds-hoadonxuat" element={<HoaDonXuat/>}/>
+                <Route path="/cart" element={<Cart/>}/>
+                <Route path="/ds-hoadonxuat/:id" element={<ChiTietHoaDonXuat/>}/>
+              </Routes>
+            </Container>
 
-          <Footer />
-        </BrowserRouter>
-      </MyCartContext.Provider>
-    </MyUserContext.Provider>
+            <Footer />
+          </BrowserRouter>
+        </MyCartContext.Provider>
+      </MyUserContext.Provider>
+    </PayPalScriptProvider>
   );
 }
 

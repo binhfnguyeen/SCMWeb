@@ -54,6 +54,9 @@ const ChiTietNhaCungCap = () => {
             <Nav className="ms-auto align-items-center gap-2 mb-2 mt-2">
                 <Link to={`/ds-nhacungcap/${id}/chinhsua-nhacungcap`} className="btn btn-success btn-sm">Chỉnh sửa chi tiết</Link>
             </Nav>
+            <Nav className="ms-auto align-items-center gap-2 mb-2 mt-2">
+                <Link to={`/ds-nhacungcap/${id}/themsanpham`} className="btn btn-success btn-sm">Thêm sản phẩm</Link>
+            </Nav>
         </Container>
     );
 }

@@ -15,6 +15,7 @@ const Home = () => {
     const [page, setPage] = useState(1);
     const [params] = useSearchParams();
     const [, cartDispatch] = useContext(MyCartContext);
+    const [hasMore, setHasMore] = useState(true);
 
     const loadProducts = async () => {
         let url = `${endpoints['sanpham']}?page=${page}`;
@@ -34,8 +35,9 @@ const Home = () => {
             let res = await Apis.get(url);
 
             if (res.data.length == 0 && page > 1)
-                page = 0;
+                setHasMore(false)
             else {
+                setHasMore(true)
                 if (page <= 1)
                     setSanPham(res.data);
                 else
@@ -87,7 +89,7 @@ const Home = () => {
         cookie.save("carts", carts);
         console.info(carts);
 
-         cartDispatch({
+        cartDispatch({
             "type": "update"
         })
     
@@ -111,7 +113,7 @@ const Home = () => {
                         <Card.Img variant="top" src={s.hinh} />
                         <Card.Body>
                             <Card.Title>{s.tenSanPham}</Card.Title>
-                            <Card.Text>{s.gia} VNĐ</Card.Text>
+                            <Card.Text>Giá: {s.gia} VNĐ</Card.Text>
                             <Card.Text>{s.tenNhaCungCap}</Card.Text>
                             <Button variant="primary me-1">Xem chi tiết</Button>
                             <Button variant="danger" onClick={() => order(s)}>Đặt hàng</Button>
@@ -121,10 +123,17 @@ const Home = () => {
             </Row>
 
             {loading && <MySpinner />}
+            
+            {!loading && (
+                hasMore ? (
+                    <div className="mt-2 mb-2 text-center">
+                    <Button variant="primary" onClick={loadMore}>Xem thêm...</Button>
+                    </div>
+                ) : (
+                    <div className="mt-2 mb-2 text-center">Không còn sản phẩm nào!</div>
+                )
+                )}
 
-            {page > 0 && <div className="mt-2 mb-2 text-center">
-                <Button variant="primary" onClick={loadMore}>Xem thêm...</Button>
-            </div>}
         </>
     );
 }
