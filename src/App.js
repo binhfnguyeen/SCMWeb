@@ -39,6 +39,10 @@ import ChiTietHoaDonXuat from "./components/ChiTietHoaDonXuat";
 import HoTroKhachhang from "./components/HoTroKhachHang";
 import DsChatCSKH from "./components/DsChatCSKH";
 import CSKHChatPage from "./components/CSKHChatPage";
+import NhanVienDonHang from "./components/NhanVienDonHang";
+import NhanVienChiTietDonHangXuat from "./components/NhanVienChiTietDonHangXuat";
+import KhachHangDonHang from "./components/KhachHangDonHang";
+import KhachHangChiTietDonHang from "./components/KhachHangChiTietDonHang";
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   let [cartCounter, cartDispatch] = useReducer(MyCartReducer, 0);
@@ -82,6 +86,10 @@ const App = () => {
               <Route path="/hotrokhachhang" element={<HoTroKhachhang />} />
               <Route path="/cskh/danhsach" element={<DsChatCSKH />} />
               <Route path="/cskh/danhsach/:id" element={<CSKHChatPage />} />
+              <Route path="/Nhanvien/ds-donhang/vanchuyen" element={<NhanVienDonHang />} />
+              <Route path="/Khachhang/ds-donhang/vanchuyen" element={<KhachHangDonHang />} />
+              <Route path="/Khachhang/ds-donhang/vanchuyen/:id" element={<KhachHangChiTietDonHang />} />
+              <Route path="/Nhanvien/ds-donhang/vanchuyen/:id" element={<NhanVienChiTietDonHangXuat />} />
             </Routes>
           </Container>
 

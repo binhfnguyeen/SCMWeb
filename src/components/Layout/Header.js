@@ -24,11 +24,12 @@ const Header = () => {
                                     <NavDropdown.Item as={Link} to="/ds-doitacvanchuyen">Đối tác vận chuyển</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-nhacungcap">Nhà cung cấp</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/ds-vanchuyen">Vận chuyển</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/Nhanvien/ds-donhang/vanchuyen">Danh sách đơn hàng vận chuyển</NavDropdown.Item>
                                     {user.username == "cskh" && <NavDropdown.Item as={Link} to="/cskh/danhsach">Danh sách chăm sóc khách hàng</NavDropdown.Item>}
                                 </>
                             ):(
                                 <>
-                                    <NavDropdown.Item as={Link} to="/action2">Xem đơn hàng đang giao</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/Khachhang/ds-donhang/vanchuyen">Theo dõi đơn hàng</NavDropdown.Item>
                                     <NavDropdown.Item as={Link} to="/hotrokhachhang">Hỗ trợ khách hàng</NavDropdown.Item>
                                 </>
                             )}
