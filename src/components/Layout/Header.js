@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
     const [user, dispatch] = useContext(MyUserContext);
-    const [cartCounter, ] = useContext(MyCartContext);
+    const [cartCounter,] = useContext(MyCartContext);
     return (
         <Navbar expand="lg" className="bg-white shadow-sm py-3 px-4">
             <Container>
@@ -14,27 +14,23 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Link to="/" className="nav-link text-dark">Trang chủ</Link>
-                        <NavDropdown title="Tùy chọn" id="basic-nav-dropdown">
-                            {user && (user.role === "ADMIN" || user.role === "NHANVIEN") ? (
-                                <>
-                                    <NavDropdown.Item as={Link} to="/ds-donhangnhap">Đơn hàng nhập</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-donhangxuat">Đơn hàng xuất</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-kho">Quản lý kho</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-doitacvanchuyen">Đối tác vận chuyển</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-nhacungcap">Nhà cung cấp</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/ds-vanchuyen">Vận chuyển</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/Nhanvien/ds-donhang/vanchuyen">Danh sách đơn hàng vận chuyển</NavDropdown.Item>
-                                    {user.username == "cskh" && <NavDropdown.Item as={Link} to="/cskh/danhsach">Danh sách chăm sóc khách hàng</NavDropdown.Item>}
-                                </>
-                            ):(
-                                <>
-                                    <NavDropdown.Item as={Link} to="/Khachhang/ds-donhang/vanchuyen">Theo dõi đơn hàng</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/hotrokhachhang">Hỗ trợ khách hàng</NavDropdown.Item>
-                                </>
-                            )}
-                        </NavDropdown>
-
+                        {user && (user.role === "ADMIN" || user.role === "NHANVIEN") && (
+                            <NavDropdown title="Tùy chọn" id="basic-nav-dropdown">
+                                <NavDropdown.Item as={Link} to="/ds-donhangnhap">Đơn hàng nhập</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ds-donhangxuat">Đơn hàng xuất</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ds-kho">Quản lý kho</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ds-doitacvanchuyen">Đối tác vận chuyển</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ds-nhacungcap">Nhà cung cấp</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ds-vanchuyen">Vận chuyển</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/Nhanvien/ds-donhang/vanchuyen">Danh sách đơn hàng vận chuyển</NavDropdown.Item>
+                                {user.username === "cskh" && (
+                                    <NavDropdown.Item as={Link} to="/cskh/danhsach">Danh sách chăm sóc khách hàng</NavDropdown.Item>
+                                )}
+                            </NavDropdown>
+                        )}
+                        <Link to="/Khachhang/ds-donhang/vanchuyen" className="nav-link text-dark">Theo dõi đơn hàng</Link>
                         <Link to="/cart" className="nav-link text-success">Giỏ hàng <Badge bg="danger">{cartCounter}</Badge></Link>
+                        {user && <Link to="/hotrokhachhang" className="nav-link text-dark">Hỗ trợ khách hàng</Link>}
                     </Nav>
 
                     <Nav className="ms-auto align-items-center gap-2">
