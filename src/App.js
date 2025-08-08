@@ -7,7 +7,7 @@ import { MyCartContext, MyUserContext } from "./configs/Context";
 import { Container } from "react-bootstrap";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import MyUserReducer from "./reducers/MyUserReducer";
 import DonHangNhap from "./components/DonHangNhap";
 import ChiTietDonHangNhap from "./components/ChiTietDonHangNhap";
@@ -45,9 +45,33 @@ import KhachHangDonHang from "./components/KhachHangDonHang";
 import KhachHangChiTietDonHang from "./components/KhachHangChiTietDonHang";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ThemSanPham from "./components/ThemSanPham";
+import cookie from 'react-cookies';
+import { authApis, endpoints } from "./configs/Apis";
+
 const App = () => {
   let [user, dispatch] = useReducer(MyUserReducer, null);
   let [cartCounter, cartDispatch] = useReducer(MyCartReducer, 0);
+
+  useEffect(()=>{
+    const loadUser = async () =>{
+      const token = cookie.load('token');
+      if(token){
+        try{
+          let res = await authApis().get(endpoints["profile"]);
+          dispatch({
+            type: "login",
+            payload: res.data
+          })
+        } catch (err) {
+          console.error("Không thể load user từ token: ", err);
+          cookie.remove('token');
+        }
+      }
+    }
+
+    loadUser();
+  }, []);
+
   return (
     <PayPalScriptProvider options={{ "client-id": "AVWMIgje4DokV20FBQMA4K4342piZKJXpqCvwhlchvAoP_2Ag7evD1LLOAKcRUtDjNOv16s9nV-osDx8" }}>
       <MyUserContext.Provider value={[user, dispatch]}>
